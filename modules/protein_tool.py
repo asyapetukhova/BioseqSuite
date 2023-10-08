@@ -121,3 +121,19 @@ def find_amino_acid_indices(seq: str, amino_acid: str) -> str:
             indices.append(index + 1)
     output = ', '.join(str(i) for i in indices)
     return output
+
+
+def count_variant_rna(seq: str) -> int:
+    """
+    Сounts the number of RNAs that can be a template for the synthesis of the entered sequence
+
+    Arguments:
+    - seq (str): amino acid sequence. The input must be uppercased and use the single letter amino acid code
+
+    Returns:
+    - output (int): number of RNAs that can be a template for the synthesis of the entered sequence
+    """
+    output = 1
+    for i in seq:
+        output = output * NUMBER_CODONS[i]
+    return output
