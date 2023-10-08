@@ -66,3 +66,16 @@ def complement(seq: str) -> str:
         return "".join([RNA_DICT[base] for base in seq])
     else:
         return "".join([DNA_DICT[base] for base in seq])
+
+
+def reverse_complement(seq: str) -> str:
+    """
+    Returns the reverse complementary sequence
+
+    Arguments:
+    - seq (str): DNA or RNA sequence
+
+    Returns:
+    - output (str): Reverse complement sequence
+    """
+    return complement(reverse(seq))
