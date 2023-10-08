@@ -37,3 +37,16 @@ def transcribe(seq: str) -> str:
         raise ValueError("Can't transcribe RNA!")
     else:
         return seq.replace("T", "U").replace("t", "u")
+
+
+def reverse(seq: str) -> str:
+    """
+    Reverses the sequence
+
+    Arguments:
+    - seq (str): DNA or RNA sequence
+
+    Returns:
+    - output (str): reversed sequence
+    """
+    return seq[::-1]
