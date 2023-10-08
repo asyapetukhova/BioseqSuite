@@ -30,7 +30,7 @@ run_dna_rna_tools('ATg', 'reverse_complement') # 'cAT'
 run_dna_rna_tools('ATG', 'aT', 'reverse') # ['GTA', 'Ta']
 ```
 
-###protein_tool
+### protein_tool
 `protein_tool` function takes as input the name of the procedure and the sequence of amino acids, or two sequences, in the case of some procedures. This chair is designed for processing protein sequences.
 
 The function returns a string that reflects the results of working with the sequence.
