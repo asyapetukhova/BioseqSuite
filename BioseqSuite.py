@@ -1,4 +1,5 @@
 from collections import Counter
+from modules.calculate_protein import calculate_amino_acid_percentages, calculate_pI
 import sys
 
 # Constants
