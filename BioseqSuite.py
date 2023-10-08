@@ -30,6 +30,37 @@ def protein_tool(*args: str) -> str:
     return str(command(sequences[0], sequences[1])) if len(sequences) == 2 else str(command(sequences[0]))
 
 
+def run_dna_rna_tools(*args: str) -> str:
+    """
+    Performs the specified operation on the given sequences
+
+    Arguments:
+    - args (str): RNA/DNA sequence(s) and command.
+    The last element of the string must be the command
+
+    Returns:
+    - result (str): the result of a given sequence processing
+    """
+    seqs, operation = args[:-1], args[-1]
+    results = []  # Checks the operation
+    commands = {
+        "transcribe": transcribe,
+        "reverse": reverse,
+        "complement": complement,
+        "reverse_complement": reverse_complement,
+    }
+    command = commands[operation]
+    for seq in seqs:
+        if not set(seq).issubset(DNA_BASES) and not set(seq).issubset(RNA_BASES):
+            raise ValueError("Not a DNA or RNA! Check your entered sequence.")
+        results.append(command(seq))
+    # Return the result
+    if len(results) == 1:
+        return results[0]
+    else:
+        return results
+
+
 def fastq_tool(
     seqs: dict,
     gc_bounds: int | float | tuple = (0, 100),
