@@ -8,3 +8,23 @@
 - `gc_bounts` - GC composition interval (in percent) for filtering (default is (0, 100)), i.e all reads passed. If you pass **a single number** to the argument, it is assumed to be an *upper* bound.
 - `length_bounds` - filtering length interval (default is (0, 2**32)).
 - `quality_threshold` - threshold value of average read quality for filtering, default is 0 (phred33 scale).
+
+**Usage example**
+
+
+### dna_rna_tools_test
+The function run_dna_rna_tools() takes as input DNA **sequence(-s)** and one of the following **procedures**:
+
+- `transcribe` — type the transcribed sequence
+- `reverse` — type the reverse sequence
+- `complement` — type the complement sequence
+- `reverse_complement` — type the reverse complement sequence
+  
+**Usage example**
+
+```python
+run_dna_rna_tools('ATG', 'transcribe') # 'AUG'
+run_dna_rna_tools('ATG', 'reverse') # 'GTA'
+run_dna_rna_tools('AtG', 'complement') # 'TaC'
+run_dna_rna_tools('ATg', 'reverse_complement') # 'cAT'
+run_dna_rna_tools('ATG', 'aT', 'reverse') # ['GTA', 'Ta']
