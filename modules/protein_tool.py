@@ -156,3 +156,29 @@ def determine_total_protein_charge(seq) -> str:
     if number_of_pos == number_of_neg:
         return 'neutral'
     return 'positive' if number_of_pos > number_of_neg else 'negative'
+
+
+def calculate_pI(seq: str) -> float:
+    """
+    Calculation pI of the protein in neutral pH
+
+    Arguments:
+    - seq (str): amino acid sequence. The input must be uppercased and use the single letter amino acid code
+
+    Returns:
+    - output (float): approximate value of the pI of the protein in neutral pH
+    """
+    seq_list = list(seq.strip())
+    first_aa = seq_list[0]
+    last_aa = seq_list[-1]
+    aa_cnt = Counter(seq_list)
+
+    summ_charge = [PK2[first_aa], PK1[last_aa]]
+
+    for key, value in aa_cnt.items():
+        try:
+            summ_charge.extend([PK3[key] for _ in range(value)])
+        except:
+            pass
+
+    return sum(summ_charge) / len(summ_charge)
