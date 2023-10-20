@@ -1,4 +1,6 @@
+import sys
 from collections import Counter
+
 from modules.calculate_protein import calculate_amino_acid_percentages, calculate_pI
 from modules.classify_amino_acid import classify_amino_acid
 from modules.counting_protein import counting_point_mutations, counting_molecular_weight, count_variant_rna
@@ -8,7 +10,9 @@ from modules.is_protein import is_protein
 from modules.reverse_and_complement import reverse, complement, reverse_complement
 from modules.total_protein_charge import determine_total_protein_charge
 from modules.transcribe import transcribe
-import sys
+
+
+
 
 # Constants
 NUMBER_CODONS = {'F': 2, 'L': 6, 'I': 3, 'M': 1, 'V': 4, 'S': 6, 'P': 4, 'T': 4,
