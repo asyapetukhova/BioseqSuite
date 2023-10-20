@@ -15,22 +15,6 @@ from modules.transcribe import transcribe
 
 
 # Constants
-NUMBER_CODONS = {'F': 2, 'L': 6, 'I': 3, 'M': 1, 'V': 4, 'S': 6, 'P': 4, 'T': 4,
-                 'A': 4, 'Y': 2, 'H': 2, 'Q': 2, 'N': 2, 'K': 2, 'D': 2, 'E': 2,
-                 'C': 2, 'W': 1, 'R': 6, 'G': 4
-                 }
-NEG_CHARGED = ['D', 'E']
-POS_CHARGED = ['H', 'K', 'R']
-PK3 = {'Y': 10.07, 'H': 6.0, 'K': 10.53,
-       'C': 10.78, 'D': 3.65, 'E': 4.25, 'R': 12.48
-       }
-AA_SET = set('FLIMVSPTAYHQNKDECWRG')
-DICT_MOLECULAR_MASS = {
-    'G': 75, 'A': 89, 'V': 117, 'L': 131, 'I': 131, 'P': 115,
-    'F': 165, 'Y': 181, 'W': 204, 'S': 105, 'T': 119, 'C': 121,
-    'M': 149, 'N': 132, 'Q': 146, 'D': 133, 'E': 147, 'K': 146,
-    'R': 174, 'H': 155
-}
 DNA_DICT = {
     "A": "T",
     "T": "A",
