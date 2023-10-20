@@ -12,6 +12,11 @@ from modules.total_protein_charge import determine_total_protein_charge
 from modules.transcribe import transcribe
 
 
+#Constants
+DNA_BASES = "ACGTacgt"
+RNA_BASES = "ACGUacgu"
+
+
 def protein_tool(*args: str) -> str:
     """
     Main function that is used to get sequence(s) and command. It performs a given action with the entered sequence
