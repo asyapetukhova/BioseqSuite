@@ -19,8 +19,6 @@ RNA_DICT = {
     "c": "g",
     "g": "c",
 }
-DNA_BASES = "ACGTacgt"
-RNA_BASES = "ACGUacgu"
 
 
 def reverse(seq: str) -> str:
