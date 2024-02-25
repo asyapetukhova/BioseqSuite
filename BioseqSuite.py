@@ -98,8 +98,10 @@ def filter_fastq(
     length_bounds: int | tuple = (0, 2**32), 
     quality_threshold: float | int = 0
 ) -> dict:
+    """Фильтрация FastQ-файлов по длине, качеству и GC-составу с использованием Biopython."""
     
     def filter_record(record: SeqRecord) -> bool:
+        """Возвращает True, если запись удовлетворяет заданным критериям."""
         seq_len: int = len(record.seq)
         mean_quality: float = sum(record.letter_annotations["phred_quality"]) / seq_len
         gc_content: float = gc_fraction(record.seq)
@@ -107,8 +109,11 @@ def filter_fastq(
         return (length_bounds[0] <= seq_len <= length_bounds[1] and
                 mean_quality >= quality_threshold and
                 gc_bounds[0] <= gc_content <= gc_bounds[1])
-    
+        
+    # Читаем FastQ-файл и фильтруем записи
     with open(input_path, "r") as input_handle, open(output_path, "w") as output_handle:
         records = SeqIO.parse(input_handle, "fastq")
         filtered_records = (record for record in records if filter_record(record))
+
+        # Записываем отфильтрованные записи в новый FastQ-файл
         SeqIO.write(filtered_records, output_handle, "fastq")
