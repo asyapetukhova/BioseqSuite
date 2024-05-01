@@ -1,0 +1,9 @@
+name: BioseqSuite
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11.5
+  - numpy=1.26.0
+  - scikit-learn=1.4.0
+  - biopython=1.83
