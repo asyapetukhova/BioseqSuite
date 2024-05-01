@@ -1,13 +1,14 @@
 import numpy as np
 import random
+import multiprocessing as mp
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.base import BaseEstimator
-import multiprocessing as mp
 
 
 SEED = 42
 random.seed(SEED)
 np.random.seed(SEED)
+
 
 class RandomForestClassifierCustom(BaseEstimator):
     def __init__(self, n_estimators=10, max_depth=None, max_features=None, random_state=SEED):
