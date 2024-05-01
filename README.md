@@ -1,4 +1,4 @@
-# Bioinformatics Homework Repository
+# BioseqSuuite
 
 This repository contains a collection of homework assignments and projects related to bioinformatics. The main purpose of this repository is to provide a centralized location for storing and organizing the code, data, and documentation associated with these assignments.
 
