@@ -8,9 +8,12 @@ class BiologicalSequence(ABC):
     """Абстрактный базовый класс для биологических последовательностей."""
     
     def __init__(self, sequence: str) -> None:
-        if not self.is_valid(sequence):
-            raise ValueError("Invalid sequence for the given type.")
         self._sequence = sequence
+        self._check_validity()
+
+    def _check_validity(self) -> None:
+        if not self.is_valid(self._sequence):
+            raise ValueError("Invalid sequence for the given type.")
     
     @abstractmethod
     def is_valid(self, sequence: str) -> bool:
