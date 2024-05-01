@@ -90,24 +90,38 @@ class AminoAcidSequence(BiologicalSequence):
 
 
 def filter_fastq(
-    input_path: str, 
-    output_path: str, 
-    gc_bounds: int | float | tuple = (0, 100), 
-    length_bounds: int | tuple = (0, 2**32), 
+    input_path: str,
+    output_path: str,
+    gc_bounds: int | float | tuple = (0, 100),
+    length_bounds: int | tuple = (0, 2**32),
     quality_threshold: float | int = 0
-) -> dict:
+):
     """Фильтрация FastQ-файлов по длине, качеству и GC-составу с использованием Biopython."""
-    
+
     def filter_record(record: SeqRecord) -> bool:
         """Возвращает True, если запись удовлетворяет заданным критериям."""
         seq_len: int = len(record.seq)
         mean_quality: float = sum(record.letter_annotations["phred_quality"]) / seq_len
         gc_content: float = gc_fraction(record.seq)
-        
-        return (length_bounds[0] <= seq_len <= length_bounds[1] and
+
+        if isinstance(gc_bounds, tuple):
+            gc_min, gc_max = gc_bounds
+        elif isinstance(gc_bounds, (int, float)):
+            gc_min, gc_max = 0, gc_bounds / 100
+        else:
+            raise ValueError("gc_bounds must be of type tuple, int or float! Change your input values.")
+
+        if isinstance(length_bounds, tuple):
+            length_min, length_max = length_bounds
+        elif isinstance(length_bounds, int):
+            length_min, length_max = 0, length_bounds
+        else:
+            raise ValueError("length_bounds must be of type tuple or int! Change your input values.")
+
+        return (length_min <= seq_len <= length_max and
                 mean_quality >= quality_threshold and
-                gc_bounds[0] <= gc_content <= gc_bounds[1])
-        
+                gc_min <= gc_content <= gc_max)
+
     # Читаем FastQ-файл и фильтруем записи
     with open(input_path, "r") as input_handle, open(output_path, "w") as output_handle:
         records = SeqIO.parse(input_handle, "fastq")
