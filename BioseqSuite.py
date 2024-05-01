@@ -142,7 +142,7 @@ def fastq_tool(
         else:
             raise ValueError("quality_threshold must be of type int or float.")
         seqs_filtered[name] = sequence
-    if seqs_filtered == {}:
+
+    if not seqs_filtered:
         print("No sequences found! Change your input parameters.")
-    else:
-        return seqs_filtered
+    return seqs_filtered
