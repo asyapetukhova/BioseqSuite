@@ -3,6 +3,7 @@ from Bio import SeqIO
 from Bio.SeqUtils import gc_fraction
 from typing import Any
 
+
 class BiologicalSequence(ABC):
     """Абстрактный базовый класс для биологических последовательностей."""
     
