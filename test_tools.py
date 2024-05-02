@@ -9,6 +9,7 @@ from Bio import SeqIO
 from BioseqSuite import AminoAcidSequence, DNASequence, RNASequence
 from custom_random_forest import RandomForestClassifierCustom
 
+
 class TestRandomForestClassifierCustom(unittest.TestCase):
     def setUp(self):
         self.X, self.y = make_classification(n_samples=1000, n_features=10, n_informative=5, random_state=42)
